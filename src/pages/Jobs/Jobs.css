@@ -1,0 +1,19 @@
+.JobsContainer {
+  margin-top: 60px;
+}
+
+@media(max-width:843px){
+  .JobsContainer {
+    margin-top: 150px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination button {
+  width: 150px;
+}

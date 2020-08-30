@@ -1,0 +1,18 @@
+.logo{
+    width: max-content;
+    display: inline-block;
+    border: 1px solid #f7ed00;
+    background-color: rgb(27, 27, 27);
+}
+
+.logo h1 {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.logo h1 a {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}

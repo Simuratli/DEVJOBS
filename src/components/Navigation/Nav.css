@@ -1,0 +1,35 @@
+.nav_list {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  list-style: none;
+  width: 20%;
+}
+
+.nav_list_item {
+  font-size: 20px;
+  background-color: #f7ed00;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: fit-content;
+  text-align: center;
+}
+
+.nav_list_item a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav_list_item a.active {
+  padding-left: 40px;
+  transition: 0.4s ease-in-out;
+}
+
+.logoContainer{
+  position: absolute;
+  top: 10px;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+}

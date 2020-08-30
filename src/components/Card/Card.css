@@ -1,0 +1,96 @@
+.card {
+  width: 100%;
+  border: 6px solid #f7ed00;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+.card_visible {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_unvisible {
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.card_name {
+  font-size: 30px;
+  cursor: pointer;
+  background-color: red;
+}
+.card_name span {
+  font-size: 30px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+.company_info a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  text-decoration: none;
+  color: black;
+}
+
+.card_info {
+  padding: 10px 10px;
+}
+
+.company-image {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.company-name {
+  font-size: 15px;
+}
+
+.applytButton {
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  padding: 0 25px;
+  font-size: 20px;
+  background-color: #f7ed00;
+  border: 0;
+}
+
+.adress {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .card_name {
+    font-size: 20px;
+  }
+  .card_name svg {
+    font-size: 20px;
+  }
+  .adress {
+    font-size: 12px;
+  }
+  .company-name {
+    font-size: 12px;
+  }
+  .applytButton {
+    padding: 0 20px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 700px) {
+  .card {
+    width: 70%;
+    margin: 10px auto;
+  }
+}

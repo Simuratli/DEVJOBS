@@ -1,0 +1,37 @@
+.search {
+  width: 100%;
+  padding: 0 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.searchCenter {
+  display: flex;
+}
+
+.searchBtn {
+  font-size: 15px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  border: 0;
+  height: 50px;
+  background-color: #f7ed00;
+}
+
+.searchBtn:focus {
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .searchBtn {
+    padding: 0;
+    width: 50px;
+  }
+}
+
+.mainPage_search {
+  width: 40vw;
+}

@@ -1,0 +1,14 @@
+.wallpaper {
+ width: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.wallcontainer{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

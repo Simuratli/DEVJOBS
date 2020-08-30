@@ -1,0 +1,28 @@
+.input-container {
+  display: inline-block;
+}
+
+.input {
+  width: 100%;
+  font-size: 20px;
+  height: 50px;
+  border: 1px solid #f7ed00 !important;
+  padding: 3px 10px;
+  box-sizing: border-box;
+  border: 0;
+}
+.input:focus {
+  outline: 0;
+}
+
+@media (min-width: 700px) {
+  .input {
+    width: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  .input {
+    font-size: 10px;
+  }
+}

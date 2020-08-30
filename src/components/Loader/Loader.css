@@ -1,0 +1,21 @@
+.Loader {
+  width: 50%;
+}
+
+@media(max-width:600px){
+  .Loader {
+    width: 60%;
+  }
+}
+.loader {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2eee9;
+}
+
+
