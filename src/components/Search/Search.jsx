@@ -23,7 +23,7 @@ const Search = (props) => {
     const { name, value } = e.target;
     setState((prevState) => ({
       ...prevState,
-      [name]: value.trim()
+      [name]: value.split(" ").join("")
     }));
   };
 
