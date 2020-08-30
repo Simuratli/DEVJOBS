@@ -36,6 +36,8 @@
 
 .card_info {
   padding: 10px 10px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .company-image {
@@ -46,6 +48,9 @@
 
 .company-name {
   font-size: 15px;
+  word-wrap: break-word;
+  width: 150px;
+  word-break: break-all;
 }
 
 .applytButton {
