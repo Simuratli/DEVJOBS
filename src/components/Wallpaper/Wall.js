@@ -5,7 +5,7 @@ const wall = (props) => {
    <div className='wallcontainer'>
       <div
       style={{
-        backgroundImage: `url(${require("../../assets/images/happy_guy_walk.gif")})`
+        backgroundImage: `url(${require("../../assets/images/ezgif.com-optimize.gif")})`
       }}
       className="wallpaper"
     >

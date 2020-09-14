@@ -3,6 +3,7 @@ import "./Card.css";
 import ReactHtmlParser from "react-html-parser";
 import { motion } from "framer-motion";
 
+
 function Card(props){
 
  const [state, setState] = useState({

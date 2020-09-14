@@ -1,83 +1,83 @@
-import React from "react";
-import Card from "../../components/Card/Card";
+import React,{useState,useEffect,Suspense,lazy} from "react";
 import axios from "axios";
 import "./Jobs.css";
 import Loader from "../../components/Loader/Loader";
 
-class Jobs extends React.Component {
-  state = {
-    data: [],
-    loader: false,
-    emptyJob: false
-  };
-  page = 1;
+const Card = lazy(()=>{
+  return import('../../components/Card/Card')
+})
 
-  componentDidMount() {
-    let url = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json${this.props.location.search}`;
+function Jobs(props) {
+
+const [state, setstate] = useState({
+  data: [],
+  loader: false,
+  emptyJob: false,
+  
+})
+
+let page = 1
+
+useEffect(() => {
+  let url = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json${props.location.search}`;
     axios
       .get(url)
       .then((res) => {
-        this.setState({ data: res.data, loader: true });
+        setstate({ data: res.data, loader: true });
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+}, []);
 
-  nextState = () => {
-    this.setState({ loader: false });
-    this.page += 1;
+  const nextState = () => {
+    setstate({ loader: false });
+      page += 1;
 
     axios
       .get(
         "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=" +
-          this.page
+          page
       )
       .then((res) => {
-        this.setState({ data: res.data, loader: true });
+        setstate({ data: res.data, loader: true });
+        console.log(page)
         if (res.data.length === 0) {
-          this.setState({ emptyJob: true });
+          setstate({ emptyJob: true });
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+};
 
-  goBack = () => {
-    this.setState({ loader: false });
-    this.page -= 1;
-    if (this.page < 0) {
-      this.page -= 1;
+  const goBack = () => {
+    setstate({ loader: false });
+    page -= 1;
+    if (page < 0) {
+      page -= 1;
     }
-
     axios
       .get(
         "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=" +
-          this.page
+        page
       )
       .then((res) => {
-        this.setState({ data: res.data, loader: true });
+        setstate({ data: res.data, loader: true });
         if (res.data.length === 0) {
-          this.setState({ emptyJob: true });
+        setstate({ emptyJob: true });
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
-  render() {
-    return (
-      <>
-        {!this.state.loader ? (
-          <Loader />
-        ) : (
-          <div className="JobsContainer">
-            {this.state.data.map((item, i) => {
-              return (
+
+  return (
+    <>
+      {!state.loader ? (
+        <Loader />
+      ) : (
+        <div className="JobsContainer">
+          {state.data.map((item, i) => {
+            return (
+              <Suspense key={i} fallback={<div>Loading....</div>}>
                 <Card
-                  key={i}
                   name={item.title}
                   companyImage={item.company_logo}
                   companyName={item.company}
@@ -87,43 +87,43 @@ class Jobs extends React.Component {
                   link={item.url}
                   companyLink={item.company_url}
                 />
-              );
-            })}
-          </div>
+              </Suspense>
+            );
+          })}
+        </div>
+      )}
+
+      <div className="pagination">
+        {page !== 1 && (
+          <button
+            style={{
+              padding: "10px 0",
+              marginBottom: "10px",
+              backgroundColor: "#f7ed00",
+              border: "0"
+            }}
+            onClick={goBack}
+          >
+            Go Back
+          </button>
         )}
 
-        <div className="pagination">
-          {this.page !== 1 && (
-            <button
-              style={{
-                padding: "10px 0",
-                marginBottom: "10px",
-                backgroundColor: "#f7ed00",
-                border: "0"
-              }}
-              onClick={this.goBack}
-            >
-              Go Back
-            </button>
-          )}
-
-          {!this.state.emptyJob && (
-            <button
-              style={{
-                padding: "10px 0",
-                marginBottom: "10px",
-                backgroundColor: "#f7ed00",
-                border: "0"
-              }}
-              onClick={this.nextState}
-            >
-              Next Page
-            </button>
-          )}
-        </div>
-      </>
-    );
-  }
+        {!state.emptyJob || state.data.length !==0 && (
+          <button
+            style={{
+              padding: "10px 0",
+              marginBottom: "10px",
+              backgroundColor: "#f7ed00",
+              border: "0"
+            }}
+            onClick={nextState}
+          >
+            Next Page
+          </button>
+        )}
+      </div>
+    </>
+  );
 }
 
-export default Jobs;
+export default Jobs
